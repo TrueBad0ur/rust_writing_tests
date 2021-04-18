@@ -1,16 +1,20 @@
 #[cfg(test)]
 
-#[test]
-fn test1() {
-    assert_eq!(1, 1);
+pub fn greeting(name: &str) -> String {
+    format!("Hello {}!", name)
 }
 
-#[test]
-fn test2() {
-    assert_eq!(1, 1);
-}
+#[cfg(test)]
+mod tests {
+    use super::*;
 
-#[test]
-fn test3() {
-    assert!(true, true);
+    #[test]
+    fn greeting_contains_name() {
+        let result = greeting("Carol");
+        assert!(
+            result.contains("jCarol"),
+            "Greeting did not contain name, value was `{}`",
+            result
+        );
+    }
 }
